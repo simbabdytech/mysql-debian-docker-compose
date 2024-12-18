@@ -1,0 +1,26 @@
+networks:
+  mysql-privatenet:
+    driver: bridge
+
+volumes:
+  mysql-data:
+
+services:
+    mysql-local:
+        command:
+            --wait_timeout=31536000
+            --interactive_timeout=31536000
+            --max_connections=1000
+        image: mysql:9.1
+        networks:
+            - mysql-privatenet
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: example
+            MYSQL_USER: pig
+            MYSQL_PASSWORD: 123456
+        volumes:
+            - mysql-data:/var/lib/mysql-data
+            - ./init-db:/docker-entrypoint-initdb.d
