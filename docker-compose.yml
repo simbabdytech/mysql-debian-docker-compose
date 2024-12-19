@@ -12,6 +12,7 @@ services:
             --interactive_timeout=31536000
             --max_connections=1000
         image: mysql:9.1
+        container_name: mysql-server
         networks:
             - mysql-privatenet
         ports:
