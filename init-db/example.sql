@@ -1,3 +1,4 @@
+SET NAMES 'utf8mb4';
 use example;
 
 DROP TABLE IF EXISTS person;
